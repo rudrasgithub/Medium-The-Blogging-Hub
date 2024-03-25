@@ -9,6 +9,24 @@ export interface Blog{
         "name":string
     }
 }
+export const useUserBlogs=({id}:{id:string})=>{
+    const [loading,setLoading]=useState(false);
+    const [userblogs,setUserblogs]=useState<Blog[]>([]);
+    useEffect(()=>{
+        axios.get(`${BACKEND_URL}/api/v1/blog/user/${id}`,{
+            headers:{
+                Authorization:localStorage.getItem("token")
+            }
+        }).then((response) => {
+            setUserblogs(response.data.userblogs);
+            setLoading(false);
+        })
+    },[id]);
+    return{
+        loading,
+        userblogs
+    }
+}
 export const useBlog=({id}:{id:string})=>{
     const [loading,setLoading]=useState(true);
     const [blog,setBlog]=useState<Blog>();
@@ -41,7 +59,7 @@ export const useBlogs=()=>{
             setBlogs(response.data.blogs)
             setLoading(false)
         })
-    },[setBlogs]);
+    },[]);
     return {
         loading,
         blogs

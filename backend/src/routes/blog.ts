@@ -66,7 +66,7 @@ blogRouter.put('/',async(c)=>{
     if(!success){
         c.status(411);
         return c.json({
-            message:"Invalid Updte Blog Inputs"
+            message:"Invalid Update Blog Inputs"
         })
     }
     const blog=await prisma.blog.update({
@@ -80,6 +80,29 @@ blogRouter.put('/',async(c)=>{
     })
     return c.json({
         blog:blog
+    })
+})
+blogRouter.get('/user/:id',async(c)=>{
+    const id=c.req.param("id");
+    const prisma=new PrismaClient({
+        datasourceUrl:c.env.DATABASE_URL
+    }).$extends(withAccelerate());
+    const userblogs=await prisma.blog.findMany({
+        where:{
+            id:Number(id)
+        },
+        select:{
+            content:true,
+            title:true,
+        }
+    })
+    if(!userblogs){
+        return c.json({
+            message:"You haven't published any public blogs yet."
+        })
+    }
+    return c.json({
+        userblogs
     })
 })
 blogRouter.get('/bulk',async(c)=>{
@@ -102,6 +125,18 @@ blogRouter.get('/bulk',async(c)=>{
         blogs
     })
 })
+blogRouter.delete('/:id',async(c)=>{
+    const blogId=c.req.param("id"); 
+    const prisma=new PrismaClient({
+        datasourceUrl:c.env.DATABASE_URL
+    }).$extends(withAccelerate());
+    await prisma.blog.delete({
+        where:{
+            id:Number(blogId)
+        }
+    })
+    return c.json({message:"Blog deleted successfully"})
+})
 blogRouter.get('/:id',async(c)=>{
     const blogId=c.req.param("id"); 
     const prisma=new PrismaClient({
@@ -120,7 +155,8 @@ blogRouter.get('/:id',async(c)=>{
                     select:{
                         name:true
                     }
-                }
+                },
+                authorId:true
             }
         })
         return c.json({

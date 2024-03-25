@@ -12,7 +12,7 @@ export const userRouter=new Hono<{
 }>();
 userRouter.post('/signup',async (c)=>{
     const prisma=new PrismaClient({
-        datasourceUrl:c.env.DATABASE_URL
+        datasourceUrl:c.env?.DATABASE_URL
     }).$extends(withAccelerate());
 
     const body=await c.req.json()
@@ -23,12 +23,24 @@ userRouter.post('/signup',async (c)=>{
             message:"Invalid Inputs"
         })
     }
+    const existingUser=await prisma.user.findUnique({
+        where:{
+            email:body.email,
+        }
+    })
+    if(existingUser){
+        c.status(411);
+        return c.json({
+            message:"Email already exists"
+        })
+    }
     const user=await prisma.user.create({
         data:{
             email:body.email,
             password:body.password
         }
     })
+    console.log("done");
     const token=await sign({id:user.id},c.env.JWT_SECRET);
     return c.json({
         jwt:token
