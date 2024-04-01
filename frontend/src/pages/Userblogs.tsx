@@ -1,18 +1,18 @@
 import { useParams } from "react-router-dom";
-import { BlogSkeleton } from "../components/BlogSkeleton";
 import { useUserBlogs } from "../hooks"
 
 export const Userblogs=()=>{
     const {id}=useParams();
     console.log(id)
     const {loading,userblogs}=useUserBlogs({
-        id: id || ""
+        id: id || "6"
     });
     if(loading || !userblogs){
         return <div>
             loading...
         </div>
     }
+    console.log(userblogs)
     return <div>
         {userblogs.map(blog=><UserBlogsList
                 title={blog.title}
