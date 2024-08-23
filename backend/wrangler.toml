@@ -1,8 +1,8 @@
-name = "backend"
-compatibility_date = "2023-12-01"
+name = "rudra"
+compatibility_date = "2024-08-20"
 
 [vars]
-DATABASE_URL="prisma://accelerate.prisma-data.net/?api_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlfa2V5IjoiNmMyNWMzYzUtMjA3OS00OWJhLTkzZjAtOTcyMjE1Yzc5MzBmIiwidGVuYW50X2lkIjoiYWE5Y2FiNmViNTVjNGYxMjVmNmQyMDY3OTRjYTgzMTM5MTUyOWMwOTRjNWRlNmFmMDJmYTZhOGFhNDY4ZjBmYiIsImludGVybmFsX3NlY3JldCI6IjgxODM1NzdlLWE5Y2YtNGE0Yi1iZDcyLWZiOWQxODMxZGU0MiJ9.K16gkbrWXu7YcQlyUhCd0CB4a-Y2PN-DT2xbkYDLLj4"
+DATABASE_URL="prisma://accelerate.prisma-data.net/?api_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlfa2V5IjoiMzRmY2EyODAtMDE4ZS00MzllLThiNzYtYTZkZjdmYjRmYmE3IiwidGVuYW50X2lkIjoiYTYxYzdmMTBkYTQ1NDIyYzg1NWU5MmY0NzIwMmE1YzViOTY4YmFmMDk1ZWZjMDg3YTY4NGQxYjg3NTIwMmY5NiIsImludGVybmFsX3NlY3JldCI6IjU4MDJmZjA0LTlkYTktNGQxNS1iZmU3LWQxYWIwYmYzNDQ2NyJ9.KTB54pXaVi1GrcLmPVbxt5Xbj5tegS_v5-Ghb4pSVFQ"
 JWT_SECRET="9966"
 
 # [[kv_namespaces]]

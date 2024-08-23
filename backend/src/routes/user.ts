@@ -2,7 +2,7 @@ import { PrismaClient } from "@prisma/client/edge";
 import { withAccelerate } from "@prisma/extension-accelerate";
 import { Hono } from "hono";
 import { sign } from "hono/jwt";
-import { signInInput, signUpInput } from "@rudrasnpm/medium";
+import { signInInput, signUpInput } from "@rudrasnpm/medium-common";
 
 export const userRouter=new Hono<{
     Bindings:{
@@ -10,6 +10,7 @@ export const userRouter=new Hono<{
         JWT_SECRET:string
     }
 }>();
+
 userRouter.post('/signup',async (c)=>{
     const prisma=new PrismaClient({
         datasourceUrl:c.env?.DATABASE_URL
@@ -36,6 +37,7 @@ userRouter.post('/signup',async (c)=>{
     }
     const user=await prisma.user.create({
         data:{
+            name: body.name,
             email:body.email,
             password:body.password
         }

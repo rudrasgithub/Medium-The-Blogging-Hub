@@ -1,1 +1,1 @@
-export const BACKEND_URL="https://backend.rudramanaidu99.workers.dev";
+export const BACKEND_URL="https://rudra.rudramanaidu99.workers.dev";

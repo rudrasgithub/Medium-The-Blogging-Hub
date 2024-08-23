@@ -12,7 +12,7 @@ export const Userblogs=()=>{
             loading...
         </div>
     }
-    console.log(userblogs)
+    console.log(userblogs);
     return <div>
         {userblogs.map(blog=><UserBlogsList
                 title={blog.title}

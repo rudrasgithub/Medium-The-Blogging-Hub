@@ -1,8 +1,9 @@
-import { SignUpInput } from "@rudrasnpm/medium";
+import { SignUpInput } from "@rudrasnpm/medium-common";
 import { ChangeEvent, useState } from "react";
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom";
 import { BACKEND_URL } from "../config";
 import axios from "axios";
+
 export const Auth=({type}:{type:"signup" | "signin"})=>{
     const navigate=useNavigate();
     const [postInputs,setPostInputs]=useState<SignUpInput>({

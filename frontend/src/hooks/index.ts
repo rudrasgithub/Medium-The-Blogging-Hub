@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
 import { BACKEND_URL } from "../config";
+
 export interface Blog{
     "content":string;
     "title":string;
@@ -9,6 +10,7 @@ export interface Blog{
         "name":string
     }
 }
+
 export const useUserBlogs=({id}:{id:string})=>{
     const [loading,setLoading]=useState(false);
     const [userblogs,setUserblogs]=useState<Blog[]>([]);
