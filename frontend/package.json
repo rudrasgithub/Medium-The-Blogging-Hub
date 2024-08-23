@@ -10,7 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@rudrasnpm/medium": "^1.0.0",
     "@rudrasnpm/medium-common": "^1.0.1",
     "axios": "^1.6.8",
     "flowbite-react": "^0.10.1",
