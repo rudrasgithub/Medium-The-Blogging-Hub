@@ -1,6 +1,7 @@
 import { Blog } from "../hooks"
 import { Appbar } from "./Appbar"
 import { Avatar } from "./BlogCard";
+import { ManageBlog } from "./Myblogs";
 
 export const FullBlog = ({ blog }: { blog: Blog }) => {
   return (
@@ -13,7 +14,14 @@ export const FullBlog = ({ blog }: { blog: Blog }) => {
                 <div className="text-slate-500 pt-2">
                     Posted on 2nd March, 2024
                 </div>
-                <div className="pt-4 text-xl font-normal">{blog.content}</div>
+                <div className="flex justify-between items-center">
+                    <div className="pt-4 text-xl font-normal">
+                        {blog.content}
+                    </div>
+                    {/* <div className="mr-20">
+                        <ManageBlog />
+                    </div> */}
+                </div>
             </div>
             <div className="col-span-4">
                 <div className="text-slate-600 text-lg">

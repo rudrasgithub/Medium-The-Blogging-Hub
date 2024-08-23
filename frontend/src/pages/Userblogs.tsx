@@ -5,7 +5,7 @@ export const Userblogs=()=>{
     const {id}=useParams();
     console.log(id)
     const {loading,userblogs}=useUserBlogs({
-        id: id || "6"
+        id: id || "2"
     });
     if(loading || !userblogs){
         return <div>
@@ -13,6 +13,7 @@ export const Userblogs=()=>{
         </div>
     }
     console.log(userblogs);
+
     return <div>
         {userblogs.map(blog=><UserBlogsList
                 title={blog.title}
@@ -20,7 +21,6 @@ export const Userblogs=()=>{
                 publishedDate={"25th March 2024"} 
             /> 
         )}
-        hello
     </div>
 }
 interface UserBlogTypes{
@@ -28,6 +28,7 @@ interface UserBlogTypes{
     content:string;
     publishedDate:string;
 }
+
 function UserBlogsList({
     title,
     content,
